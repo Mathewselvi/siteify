@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siteify - Where Great Websites Begin</title>
+    <meta name="description" content="Siteify - Premium web development, SEO, and social media marketing services. Where great websites begin.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-animation">
+                <h1 class="preloader-text">Siteify</h1>
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand gradient-text" href="#home">
+                <i class="fas fa-bolt me-2"></i>Siteify
+            </a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-gradient-primary nav-cta" href="works.html">
+                            <span>View Work</span>
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-bg">
+            <div class="hero-particles"></div>
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6 col-md-12 order-lg-1 order-2" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-content">
+                        <div class="hero-badge" data-aos="zoom-in" data-aos-delay="200">
+                            <i class="fas fa-star"></i>
+                            <span>Premium Digital Agency</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="gradient-text display-1">Siteify</span>
+                            <span class="hero-subtitle">Where Great Websites Begin</span>
+                        </h1>
+                        <p class="hero-description">
+                            Transform your digital presence with cutting-edge web development, 
+                            powerful SEO strategies, and viral social media campaigns that drive 
+                            extraordinary results.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="works.html" class="btn btn-gradient-primary btn-lg hero-btn">
+                                <span>Explore Our Work</span>
+                                <i class="fas fa-rocket ms-2"></i>
+                            </a>
+                            <a href="#contact" class="btn btn-outline-light btn-lg hero-btn">
+                                <span>Start Project</span>
+                                <i class="fas fa-arrow-down ms-2"></i>
+                            </a>
+                        </div>
+                        <div class="hero-stats" data-aos="fade-up" data-aos-delay="600">
+                            <div class="stat-item">
+                                <span class="stat-number">20+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Success Rate</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 order-lg-2 order-1" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="hero-visual">
+                        <div class="floating-cards">
+                            <div class="floating-card card-1" data-aos="fade-up" data-aos-delay="400">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="floating-card card-2" data-aos="fade-up" data-aos-delay="500">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="floating-card card-3" data-aos="fade-up" data-aos-delay="600">
+                                <i class="fab fa-js-square"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="floating-card card-4" data-aos="fade-up" data-aos-delay="700">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                        </div>
+                        <div class="hero-mockup">
+                            <div class="mockup-browser">
+                                <div class="browser-header">
+                                    <div class="browser-dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="browser-content">
+                                    <div class="code-lines">
+                                        <div class="code-line"></div>
+                                        <div class="code-line"></div>
+                                        <div class="code-line short"></div>
+                                        <div class="code-line"></div>
+                                        <div class="code-line short"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 order-lg-1 order-2" data-aos="fade-right">
+                    <div class="about-image">
+                        <div class="about-card glass-card">
+                            <div class="card-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>Innovation</h3>
+                            <p>Cutting-edge solutions for modern businesses</p>
+                        </div>
+                        <div class="about-card glass-card">
+                            <div class="card-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Performance</h3>
+                            <p>Lightning-fast websites that convert</p>
+                        </div>
+                        <div class="about-card glass-card">
+                            <div class="card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Security</h3>
+                            <p>Enterprise-grade protection for your data</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 order-lg-2 order-1" data-aos="fade-left">
+                    <div class="about-content">
+                        <div class="section-badge">
+                            <i class="fas fa-info-circle"></i>
+                            <span>About Siteify</span>
+                        </div>
+                        <h2 class="section-title">
+                            Crafting Digital Excellence 
+                            <span class="gradient-text">Since Day One</span>
+                        </h2>
+                        <p class="section-description">
+                            At Siteify, we don't just build websites – we create digital experiences that 
+                            captivate, convert, and scale. Our team of expert developers, designers, and 
+                            digital strategists work together to bring your vision to life.
+                        </p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Custom Web Development</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Advanced SEO Optimization</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Social Media Marketing</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>24/7 Premium Support</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-gradient-primary btn-lg mt-4">
+                            <span>Start Your Project</span>
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5" data-aos="fade-up">
+                    <div class="section-badge">
+                        <i class="fas fa-cogs"></i>
+                        <span>Our Services</span>
+                    </div>
+                    <h2 class="section-title">
+                        Premium Digital Solutions
+                        <span class="gradient-text">That Drive Results</span>
+                    </h2>
+                    <p class="section-description">
+                        From concept to launch, we provide comprehensive digital services 
+                        that transform your business and accelerate growth.
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card glass-card">
+                        <div class="service-icon">
+                            <div class="icon-bg">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+                        <h4>Web Development</h4>
+                        <p>
+                            Custom, responsive websites built with cutting-edge technologies. 
+                            From simple portfolios to complex e-commerce platforms.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">React</span>
+                            <span class="feature-tag">Node.js</span>
+                            <span class="feature-tag">MongoDB</span>
+                        </div>
+                        <a href="services.html#web-development" class="service-link">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card glass-card featured">
+                        <div class="featured-badge">
+                            <i class="fas fa-star"></i>
+                            <span>Most Popular</span>
+                        </div>
+                        <div class="service-icon">
+                            <div class="icon-bg">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        <h4>SEO Optimization</h4>
+                        <p>
+                            Boost your search rankings with proven SEO strategies. 
+                            Drive organic traffic and increase your online visibility.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Keywords</span>
+                            <span class="feature-tag">Analytics</span>
+                            <span class="feature-tag">Ranking</span>
+                        </div>
+                        <a href="services.html#seo-marketing" class="service-link">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card glass-card">
+                        <div class="service-icon">
+                            <div class="icon-bg">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                        </div>
+                        <h4>Social Media Marketing</h4>
+                        <p>
+                            Engage your audience with strategic social media campaigns 
+                            that build brand awareness and drive conversions.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Instagram</span>
+                            <span class="feature-tag">Facebook</span>
+                            <span class="feature-tag">LinkedIn</span>
+                        </div>
+                        <a href="services.html#social-media" class="service-link">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5" data-aos="fade-up">
+                    <div class="section-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Featured Work</span>
+                    </div>
+                    <h2 class="section-title">
+                        Projects That Inspire
+                        <span class="gradient-text">& Deliver Results</span>
+                    </h2>
+                    <p class="section-description">
+                        Explore our latest projects and see how we've helped businesses 
+                        transform their digital presence.
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-12 col-sm-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" alt="E-commerce Platform">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h5>E-commerce Websites</h5>
+                                    <p>Modern online store with advanced features</p>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Mern</span>
+                                        <span class="tag">Django</span>
+                                        <span class="tag">PHP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <img src="dynamic.jpg">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h5>Dynamic Websites</h5>
+                                    <p>Dynamic website delivering live insights through data visualization.</p>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Mern</span>
+                                        <span class="tag">Django</span>
+                                        <span class="tag">PHP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <img src="static1.jpg">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h5>Static Websites</h5>
+                                    <p>Responsive static websites with modern design.</p>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">HTML</span>
+                                        <span class="tag">CSS</span>
+                                        <span class="tag">JavaScript</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="400">
+                    <div class="portfolio-card glass-card">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="SaaS Platform">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h5>SaaS Platform</h5>
+                                    <p>Complete business management solution</p>
+                                    <div class="portfolio-tags">
+                                        <span class="tag">Laravel</span>
+                                        <span class="tag">Vue.js</span>
+                                        <span class="tag">MySQL</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="works.html" class="btn btn-gradient-primary btn-lg">
+                    <span>View All Projects</span>
+                    <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5" data-aos="fade-up">
+                    <div class="section-badge">
+                        <i class="fas fa-envelope"></i>
+                        <span>Get In Touch</span>
+                    </div>
+                    <h2 class="section-title">
+                        Ready to Start Your
+                        <span class="gradient-text">Next Project?</span>
+                    </h2>
+                    <p class="section-description">
+                        Let's discuss how we can help transform your digital presence and 
+                        achieve your business goals.
+                    </p>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 order-lg-1 order-2" data-aos="fade-right">
+                    <div class="contact-info">
+                        <div class="contact-item glass-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-content">
+                                <h5>Location</h5>
+                                <p>Adimaly , Kerala , India</p>
+                            </div>
+                        </div>
+                        <div class="contact-item glass-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-content">
+                                <h5>Phone</h5>
+                                <p>+91 9633035175</p>
+                            </div>
+                        </div>
+                        <div class="contact-item glass-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-content">
+                                <h5>Email</h5>
+                                <p>siteify.in@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 order-lg-2 order-1" data-aos="fade-left">
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" method="post" action="https://script.google.com/macros/s/AKfycbzMOYAMe31m7NubhfDc2uNeKOqL55XaImRFx9U_-7bKT3YQgr3wgYLonLr4ZTfRIyaA/exec">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name">Full Name</label>
+                                <div class="form-line"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Email Address</label>
+                                <div class="form-line"></div>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message">Your Message</label>
+                                <div class="form-line"></div>
+                            </div>
+                            <button type="submit" class="btn btn-gradient-primary btn-lg w-100">
+                                <span class="submit-text">Send Message</span>
+                                <span class="submit-loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    Sending...
+                                </span>
+                                <i class="fas fa-paper-plane ms-2"></i>
+                            </button>
+                        </form>
+                        <div id="contactMessage" class="contact-message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="footer-brand">
+                        <h3 class="gradient-text">
+                            <i class="fas fa-bolt me-2"></i>Siteify
+                        </h3>
+                        <p>Where great websites begin. Transforming digital experiences with innovation, creativity, and cutting-edge technology.</p>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/siteify_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mathew-selvi-9568a4319/" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://wa.me/+919633035175" class="social-link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer-links">
+                        <h5>Services</h5>
+                        <ul>
+                            <li><a href="#">Web Development</a></li>
+                            <li><a href="#">SEO Optimization</a></li>
+                            <li><a href="#">Social Media</a></li>
+                            <li><a href="#">Branding</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="footer-links">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="footer-links">
+                        <h5>Support</h5>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="footer-newsletter">
+                        <h5>Newsletter</h5>
+                        <p>Subscribe for updates and tips</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email">
+                            <button type="submit">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 Siteify. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>Made with <i class="fas fa-heart text-danger"></i> by Siteify Team</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

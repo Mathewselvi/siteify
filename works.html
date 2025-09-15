@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Siteify | Where Great Websites Begin</title>
+    <meta name="description" content="Explore our stunning portfolio of web development, SEO, and social media marketing projects that drive real results.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Additional CSS for Works Page -->
+    <style>
+        .works-hero {
+            background: linear-gradient(135deg, #00704A 0%, #00A368 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .works-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            animation: grain 8s linear infinite;
+        }
+        
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -5%); }
+            20% { transform: translate(-10%, 5%); }
+            30% { transform: translate(5%, -10%); }
+            40% { transform: translate(-5%, 15%); }
+            50% { transform: translate(-10%, 5%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 10%); }
+            80% { transform: translate(-15%, 0%); }
+            90% { transform: translate(10%, 5%); }
+        }
+        
+        .filter-button {
+            position: relative;
+            overflow: hidden;
+            background: white;
+            border: 2px solid #00704A;
+            color: #00704A;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .filter-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 112, 74, 0.2);
+            background: #00704A;
+            color: white;
+        }
+        
+        .filter-button.active {
+            background: #00704A;
+            border-color: #00704A;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 112, 74, 0.4);
+        }
+        
+        .filter-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .filter-button:hover::before {
+            left: 100%;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+        
+        @media (max-width: 576px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #e0e0e0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 112, 74, 0.3);
+        }
+        
+        .portfolio-item.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+        
+        .portfolio-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 112, 74, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay-content {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay-content {
+            transform: translateY(0);
+        }
+        
+        .portfolio-content {
+            padding: 2rem;
+        }
+        
+        .portfolio-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #00704A;
+        }
+        
+        .portfolio-description {
+            color: #333;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .portfolio-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 112, 74, 0.1);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #00704A;
+            border: 1px solid rgba(0, 112, 74, 0.2);
+        }
+        
+        .portfolio-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #00704A;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 112, 74, 0.3);
+            border: none;
+            cursor: pointer;
+            min-width: 140px;
+            text-align: center;
+        }
+        
+        .portfolio-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 112, 74, 0.4);
+            color: white;
+            background: #005a3c;
+        }
+        
+        .portfolio-link.secondary {
+            background: white;
+            border: 2px solid #00704A;
+            color: #00704A;
+            box-shadow: none;
+        }
+        
+        .portfolio-link.secondary:hover {
+            background: #00704A;
+            color: white;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: #00704A;
+            transform: scale(1.1);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .stats-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 112, 74, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00704A;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        /* Tablet Responsive */
+        @media (max-width: 991px) and (min-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .filter-button {
+                margin: 0.25rem;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .works-hero {
+                padding: 6rem 0 3rem;
+            }
+            
+            .hero-stats {
+                gap: 2rem;
+            }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 767px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .filter-button {
+                margin: 0.25rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .filter-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .portfolio-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .portfolio-link {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .works-hero {
+                padding: 5rem 0 3rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .portfolio-overlay-content .d-flex {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .portfolio-overlay-content .btn {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .portfolio-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 112, 74, 0.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand gradient-text" href="index.html">
+                <i class="fas fa-bolt me-2"></i>Siteify
+            </a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="works-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+                    <div class="hero-badge mb-4" style="background: rgba(255, 255, 255, 0.2); color: white;">
+                        <i class="fas fa-star"></i>
+                        <span>Our Portfolio</span>
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">
+                        Projects That <span style="color: white;">Inspire</span>
+                    </h1>
+                    <p class="lead mb-4">
+                        Discover our collection of stunning websites, powerful SEO campaigns, and viral social media strategies that have transformed businesses worldwide.
+                    </p>
+                    <div class="hero-stats d-flex justify-content-center gap-4 flex-wrap">
+                        <div class="stat-item">
+                            <span class="stat-number" style="color: white;">500+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" style="color: white;">98%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" style="color: white;">50+</span>
+                            <span class="stat-label">Awards Won</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-5" style="background: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center mb-4" data-aos="fade-up">
+                        <h3 class="mb-3" style="color: #00704A;">Filter by Category</h3>
+                        <p style="color: #333;">Explore our work across different industries and technologies</p>
+                    </div>
+                    <div class="filter-buttons text-center" data-aos="fade-up" data-aos-delay="100">
+                        <button class="filter-button active" data-filter="all">
+                            <i class="fas fa-th-large me-2"></i>All Projects
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-5" style="background: #f8f9fa;">
+        <div class="container">
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- E-commerce Project -->
+                <div class="portfolio-item" data-category="ecommerce web-development" data-aos="fade-up">
+                    <div class="portfolio-image">
+                        <img src="images/elenji.jpg">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h5 class="mb-3">View Project Details</h5>
+                                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                    <a href="https://elenjihrs.com/" class="btn btn-outline-light btn-sm" style="min-width: 120px;">
+                                        <i class="fas fa-external-link-alt me-2"></i>Live Site
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h4 class="portfolio-title">Elenji Hotels , Resorts & Spa</h4>
+                        <p class="portfolio-description">
+                            A premium booking experience offering curated stays, immersive retreats, and effortless reservation flow across Kerala's finest hill destinations.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                            <span class="portfolio-tag">Bootstrap</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://elenjihrs.com/" class="portfolio-link secondary">
+                                <i class="fas fa-external-link-alt me-2"></i>Live Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SaaS Platform -->
+                <div class="portfolio-item" data-category="web-development" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-image">
+                        <img src="images/greenpeak.jpg">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h5 class="mb-3">View Project Details</h5>
+                                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                    <a href="http://greenpeak.in/" class="btn btn-outline-light btn-sm" style="min-width: 120px;">
+                                        <i class="fas fa-external-link-alt me-2"></i>Live Site
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h4 class="portfolio-title">Green Peak Munnar</h4>
+                        <p class="portfolio-description">
+                            Embark on extraordinary journeys to the world's most breathtaking destinations. From towering mountain peaks to hidden valleys, discover the wonders that await beyond the horizon.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                        <span class="portfolio-tag">JavaScript</span>
+                            <span class="portfolio-tag">Bootstrap</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="http://greenpeak.in/" class="portfolio-link secondary">
+                                <i class="fas fa-external-link-alt me-2"></i>Live Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Campaign -->
+                <div class="portfolio-item" data-category="seo" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-image">
+                        <img src="images/kvs.jpg">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h5 class="mb-3">View Project Details</h5>
+                                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                    <a href="https://kvsspices.com/" class="btn btn-outline-light btn-sm" style="min-width: 120px;">
+                                        <i class="fas fa-external-link-alt me-2"></i>Live Site
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h4 class="portfolio-title">KVS Spices & Traders</h4>
+                        <p class="portfolio-description">
+                            KVS Spices & Traders has been a trusted name in Kerala's spice industry. We connect local farmers with global markets while maintaining the highest quality standards for our spices and agricultural products.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                            <span class="portfolio-tag">Bootstrap</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://kvsspices.com/" class="portfolio-link secondary">
+                                <i class="fas fa-external-link-alt me-2"></i>Live Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Identity -->
+                <div class="portfolio-item" data-category="branding" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portfolio-image">
+                        <img src="images/balloon.jpg">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h5 class="mb-3">View Project Details</h5>
+                                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                    <a href="https://cloudtrekballoon.com/" class="btn btn-outline-light btn-sm" style="min-width: 120px;">
+                                        <i class="fas fa-external-link-alt me-2"></i>Live Site
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h4 class="portfolio-title">Cloud Trek Balloon Co</h4>
+                        <p class="portfolio-description">
+                            Cloud Trek Balloon Co is Munnar's premier hot air balloon experience, offering breathtaking views over the region's iconic tea plantations, misty hills, and rolling peaks. 
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                            <span class="portfolio-tag">Bootstrap</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://cloudtrekballoon.com/" class="portfolio-link secondary">
+                                <i class="fas fa-external-link-alt me-2"></i>Live Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile App -->
+                <div class="portfolio-item" data-category="web-development" data-aos="fade-up" data-aos-delay="400">
+                    <div class="portfolio-image">
+                        <img src="images/Rvk.jpg">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h5 class="mb-3">View Project Details</h5>
+                                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                    <a href="https://shrirvk.com/" class="btn btn-outline-light btn-sm" style="min-width: 120px;">
+                                        <i class="fas fa-external-link-alt me-2"></i>Live Site
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h4 class="portfolio-title">Shri RVK Gouris Homestay</h4>
+                        <p class="portfolio-description">
+                            Nestled in the breathtaking landscape of Munnar,Surrounded by lush tea plantations and misty mountains, our accommodations provide a tranquil retreat from city life
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                            <span class="portfolio-tag">Bootstrap</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://shrirvk.com/" class="portfolio-link secondary">
+                                <i class="fas fa-external-link-alt me-2"></i>Live Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corporate Website -->
+                <div class="portfolio-item" data-category="web-development branding" data-aos="fade-up" data-aos-delay="500">
+                    <div class="portfolio-image">
+                        <img src="images/port.jpg">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-overlay-content">
+                                <h5 class="mb-3">View Project Details</h5>
+                                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                    <a href="https://mathewselvi.github.io/" class="btn btn-outline-light btn-sm" style="min-width: 120px;">
+                                        <i class="fas fa-external-link-alt me-2"></i>Live Site
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h4 class="portfolio-title">Personal Portfolio</h4>
+                        <p class="portfolio-description">
+                           Hello, I'm Mathew Selvi Based in India, I specialize in creating modern, scalable web applications using the MERN stack and cutting-edge web technologies that deliver exceptional user experiences.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML</span>
+                            <span class="portfolio-tag">CSS</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                            <span class="portfolio-tag">Bootstrap</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://mathewselvi.github.io/" class="portfolio-link secondary">
+                                <i class="fas fa-external-link-alt me-2"></i>Live Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+
+    <!-- CTA Section -->
+    <section class="py-5" style="background: #00704A;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+                    <h2 class="mb-4 text-white">Ready to Start Your Next Project?</h2>
+                    <p class="lead mb-4 text-white">
+                        Let's create something amazing together. Get in touch and let's discuss your vision.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="index.html#contact" class="btn btn-light btn-lg">
+                            <i class="fas fa-rocket me-2"></i>Start Your Project
+                        </a>
+                        <a href="index.html#about" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-info-circle me-2"></i>Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="footer-brand">
+                        <h3 class="gradient-text">
+                            <i class="fas fa-bolt me-2"></i>Siteify
+                        </h3>
+                        <p>Where great websites begin. Transforming digital experiences with innovation, creativity, and cutting-edge technology.</p>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/siteify_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mathew-selvi-9568a4319/" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://wa.me/+919633035175" class="social-link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer-links">
+                        <h5>Services</h5>
+                        <ul>
+                            <li><a href="#">Web Development</a></li>
+                            <li><a href="#">SEO Optimization</a></li>
+                            <li><a href="#">Social Media</a></li>
+                            <li><a href="#">Branding</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="footer-links">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="footer-links">
+                        <h5>Support</h5>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="footer-newsletter">
+                        <h5>Newsletter</h5>
+                        <p>Subscribe for updates and tips</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email">
+                            <button type="submit">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p>&copy; 2024 Siteify. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>Made with <i class="fas fa-heart text-danger"></i> by Siteify Team</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Project Details -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Project Details</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
+    
+    <script>
+        // Portfolio filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter portfolio items
+                    portfolioItems.forEach(item => {
+                        const categories = item.getAttribute('data-category').split(' ');
+                        
+                        if (filter === 'all' || categories.includes(filter)) {
+                            item.classList.remove('hidden');
+                            item.style.display = 'block';
+                        } else {
+                            item.classList.add('hidden');
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+        
+        // Modal functionality
+        function openModal(modalId) {
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            // Sample modal content - replace with actual project data
+            const modalContent = {
+                'ecommerce-modal': {
+                    title: 'Luxury E-commerce Platform',
+                    content: `
+                        <h5>Project Overview</h5>
+                        <p>This luxury e-commerce platform was built for a high-end fashion brand looking to expand their online presence. The project included custom product configurators, advanced filtering, and personalized shopping experiences.</p>
+                        
+                        <h5>Key Features</h5>
+                        <ul>
+                            <li>Advanced product filtering and search</li>
+                            <li>Personalized product recommendations</li>
+                            <li>Seamless checkout with multiple payment options</li>
+                            <li>Inventory management system</li>
+                            <li>Customer loyalty program integration</li>
+                        </ul>
+                        
+                        <h5>Results</h5>
+                        <p>The platform resulted in a 300% increase in online sales and a 45% improvement in customer retention rates.</p>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="btn btn-primary me-2">View Live Site</a>
+                            <button class="btn btn-outline-primary" onclick="closeModal()">Close</button>
+                        </div>
+                    `
+                }
+            };
+            
+            const content = modalContent[modalId] || {
+                title: 'Project Details',
+                content: '<p>Project details will be loaded here.</p>'
+            };
+            
+            modalTitle.textContent = content.title;
+            modalBody.innerHTML = content.content;
+            modal.classList.add('active');
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
